@@ -17,8 +17,7 @@ class TurkishWords(object):
 
     def random_initial_excluding(self, exclude_letters: list):
         max_try_count = len(self.initial_letters)
-        while max_try_count > 0:
-            max_try_count -= 1
+        for i in range(0, max_try_count):
             choice = random.choice(self.initial_letters)
             if choice not in exclude_letters:
                 return choice
@@ -32,8 +31,7 @@ class TurkishWords(object):
 
     def random_word_excluding_initials(self, exclude_letters: list):
         max_try_count = len(self.initial_letters)
-        while max_try_count > 0:
-            max_try_count -= 1
+        for i in range(0, max_try_count):
             choice = random.choice(self.initial_letters)
             if choice not in exclude_letters:
                 return self.turkish_words[choice]
