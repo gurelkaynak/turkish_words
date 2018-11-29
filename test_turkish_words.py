@@ -29,7 +29,7 @@ class TestTurkishWords(unittest.TestCase):
     def test_random_word_with_initial(self):
         test_safe_initials = ['b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't',
                               'u', 'v', 'y', 'z']
-        for i in range(0, 1000):
+        for i in range(0, 100000):
             random_initial = random.choice(test_safe_initials)
             random_word_with_random_initial = self.turkish_words.random_word_with_initial(random_initial)
 
