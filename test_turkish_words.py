@@ -11,10 +11,11 @@ class TestTurkishWords(unittest.TestCase):
     def setUp(self):
         self.turkish_words = TurkishWords()
 
-    def test_random_word_excluding_initials(self):
+    def test_random_word_excluding_all_initials(self):
         self.assertIsNone(self.turkish_words.random_word_excluding_initials(self.turkish_words.initial_letters))
 
-        for i in range(0, 100):
+    def test_random_word_excluding_random_initials(self):
+        for i in range(0, 1000):
             exclude_letters = random.sample(self.turkish_words.initial_letters,
                                             random.randint(0, len(self.turkish_words.initial_letters)-1))
             for j in range(0, 100):
@@ -26,7 +27,11 @@ class TestTurkishWords(unittest.TestCase):
                            'p', 'r', 's', 'ş', 't', 'u', 'ü', 'v', 'y', 'z']
         self.assertEqual(initial_letters, self.turkish_words.initial_letters)
 
-    def test_random_word_with_initial(self):
+    def test_random_initial_letters_excluding_all(self):
+        self.assertIsNone(
+            self.turkish_words.random_initial_excluding(exclude_letters=self.turkish_words.initial_letters))
+
+    def test_random_word_with_random_safe_initials(self):
         test_safe_initials = ['b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't',
                               'u', 'v', 'y', 'z']
         for i in range(0, 100000):

@@ -16,12 +16,10 @@ class TurkishWords(object):
         return random.choice(self.initial_letters)
 
     def random_initial_excluding(self, exclude_letters: list):
-        max_try_count = len(self.initial_letters)
-        for i in range(0, max_try_count):
-            choice = self.random_initial_letter()
-            if choice not in exclude_letters:
-                return choice
-        return None
+        available_letter_choices = list(filter(lambda x: x not in exclude_letters, self.initial_letters))
+        if not available_letter_choices:
+            return None
+        return random.choice(available_letter_choices)
 
     def random_word(self):
         return random.choice(self.turkish_words[self.random_initial_letter()])
