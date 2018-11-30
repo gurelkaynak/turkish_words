@@ -12,22 +12,24 @@ class TurkishWords(object):
             self.turkish_words = json.loads(file.read())
             self.initial_letters = list(self.turkish_words.keys())
 
-    def random_initial_letter(self):
+    def random_initial_letter(self) -> str:
         return random.choice(self.initial_letters)
 
-    def random_initial_excluding(self, exclude_letters: list):
-        available_letter_choices = list(filter(lambda x: x not in exclude_letters, self.initial_letters))
-        if not available_letter_choices:
-            return None
+    def random_initial_excluding(self, exclude_letters: list) -> str:
+        available_letter_choices: list = list(filter(lambda x: x not in exclude_letters, self.initial_letters))
+        assert len(available_letter_choices) > 0
+
         return random.choice(available_letter_choices)
 
-    def random_word(self):
+    def random_word(self) -> str:
         return random.choice(self.turkish_words[self.random_initial_letter()])
 
-    def random_word_with_initial(self, initial: str):
+    def random_word_with_initial(self, initial: str) -> str:
+        assert initial in self.initial_letters
+
         return random.choice(self.turkish_words[initial])
 
-    def random_word_excluding_initials(self, exclude_letters: list):
+    def random_word_excluding_initials(self, exclude_letters: list) -> str:
         try:
             return self.turkish_words[self.random_initial_excluding(exclude_letters=exclude_letters)]
         except KeyError:
