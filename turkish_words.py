@@ -1,3 +1,4 @@
+import os
 import json
 import gzip
 import random
@@ -8,7 +9,7 @@ class TurkishWords(object):
     initial_letters: list
 
     def __init__(self):
-        with gzip.open("turkish_words.json.gz", "rb") as file:
+        with gzip.open(os.path.join(os.path.dirname(__file__), "turkish_words.json.gz"), "rb") as file:
             self.turkish_words = json.loads(file.read())
             self.initial_letters = list(self.turkish_words.keys())
 
