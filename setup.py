@@ -2,8 +2,9 @@ from setuptools import setup
 
 setup(
     name='turkish_words',
-    version='0.1.0',
-    packages=[''],
+    version='0.1.2',
+    packages=['.'],
+    include_package_data=True,
     url='https://github.com/gurelkaynak/turkish_words',
     license='MIT',
     author='Gurel Kaynak',
